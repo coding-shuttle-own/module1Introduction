@@ -1,11 +1,15 @@
 package com.codingshuttle.anee.module1Introduction.impl;
 
 import com.codingshuttle.anee.module1Introduction.NotificationService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Primary
+//@Primary
 @Component
+@Qualifier("emailNotify")
+@ConditionalOnProperty(name = "notification.type", havingValue = "email")
 public class EmailNotificationService implements NotificationService {
 
     @Override
